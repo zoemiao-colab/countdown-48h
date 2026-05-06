@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>48小时倒计时</title>
+
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+    margin-top: 100px;
+    background: #f5f5f5;
+}
+#timer {
+    font-size: 60px;
+    font-weight: bold;
+}
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>48小时倒计时</h1>
+<div id="timer">加载中...</div>
+<button onclick="resetTimer()">重新开始</button>
+
+<script>
+if (!localStorage.endTime) {
+    localStorage.endTime = new Date().getTime() + 48 * 60 * 60 * 1000;
+}
+
+function updateTimer() {
+    let now = new Date().getTime();
+    let diff = Math.floor((localStorage.endTime - now) / 1000);
+
+    if (diff <= 0) {
+        document.getElementById("timer").innerText = "时间到！";
+        return;
+    }
+
+    let h = Math.floor(diff / 3600);
+    let m = Math.floor((diff % 3600) / 60);
+    let s = diff % 60;
+
+    document.getElementById("timer").innerText =
+        String(h).padStart(2,'0') + ":" +
+        String(m).padStart(2,'0') + ":" +
+        String(s).padStart(2,'0');
+}
+
+function resetTimer() {
+    localStorage.endTime = new Date().getTime() + 48 * 60 * 60 * 1000;
+}
+
+setInterval(updateTimer, 1000);
+updateTimer();
+</script>
+
+</body>
+</html>
