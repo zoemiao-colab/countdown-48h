@@ -2,38 +2,80 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<title>48小时倒计时</title>
+<title>48小时维权倒计时</title>
 
 <style>
 body {
-    font-family: Arial;
+    margin: 0;
+    background-color: red;
+    color: black;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     text-align: center;
-    margin-top: 100px;
-    background: #f5f5f5;
 }
-#timer {
-    font-size: 60px;
+
+/* 整体容器 */
+.container {
+    border: 5px solid black;
+    padding: 40px;
+    background-color: red;
+}
+
+/* 第一行标题 */
+h1 {
+    font-size: 48px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
+
+/* 第二行标题 */
+h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+/* 倒计时 */
+#timer {
+    font-size: 100px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+/* 按钮 */
 button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
+    margin-top: 30px;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid black;
+    background: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: black;
+    color: red;
 }
 </style>
 </head>
 
 <body>
 
-<h1 style="font-size: 42px; margin-bottom: 5px;">
-    时代峰峻还我711
-</h1>
+<div class="container">
 
-<h2 style="color: red; font-size: 32px;">
-    48小时维权倒计时
-</h2>
-<div id="timer">加载中...</div>
-<button onclick="resetTimer()">重新开始</button>
+    <h1>时代峰峻还我711</h1>
+    <h2>48小时维权倒计时</h2>
+
+    <div id="timer">加载中...</div>
+
+    <button onclick="resetTimer()">重新开始</button>
+
+</div>
 
 <script>
 if (!localStorage.endTime) {
